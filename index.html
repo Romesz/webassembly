@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script>
+            fetch('test.wasm').then(response => {
+                return response.arrayBuffer();
+            }).then(bytes => {
+                //console.log(WebAssembly.validate(bytes));
+                //console.log(WebAssembly.instantiate(bytes));
+                return WebAssembly.instantiate(bytes);
+            }).then((module, instance) => {
+                document.write(module.instance.exports._Z7testForv());
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
